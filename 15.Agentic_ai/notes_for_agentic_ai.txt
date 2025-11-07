@@ -1,0 +1,39 @@
+AI Agents:
+An Ai agent is an intelligent system that receives a high-level goal from the user, and autonomously plans, decides, and executes a sequence of actions by using external tools, API's, or  knowledge sources - all while maintaining context, reasoning over multiple steps, adapting to new information, and optimizing for the intended outcome.
+
+Adv of ai agents:
+- Goal Driven: you tell the agent what you want not how to do it.
+- Autonoumous Planning: Agent breaks down the problem and sequences of tasks on its own.
+- Tool Using: Agent calls API's, calculators, search tools, etc.
+- Context Aware: Maintains memory across steps to inforn future actions.
+- Adaptive: Rethink plans when things change (e.g, API fails, no data)
+
+
+What is ReAct in agentic ai:
+ReAct(Reasoning + Acting) is a design pattern used in agentic ai that stands for Reasoning + Acting. It allows a language model (llm) to interleave internal reasoning (thought) with external actions (like tool use) in a structured, multi-step process.
+
+- Instead of generating an anser in one go, the model thinks step by step, deciding what it needs to do next and optionally calling tools (APIs, calculators, websearch, etc.) to help it.
+
+
+ReAct is useful for:
+- Multi-step problem
+- Tool augmented tasks (web search, database lookup, etc)
+- making the agents reasoning transparent and auditable
+
+
+---------------------------- Agent & Agent Executor ----------------------------------------
+
+        -------------               ---------------------
+        |           |               |                   |
+        |   Agent   |               |   Agent Executor  |   
+        |           |               |                   |
+        -------------               ---------------------
+
+
+AgentExecutor orchestrates the entire loop:
+1. Sends input and previous messages to the agent.
+2. Gets the next action from agent.
+3. Executes that tool with provided input.
+4. Adds the tool's observation back into history.
+5. Loops again with updated history until the agent says final Answer. 
+
